@@ -68,10 +68,15 @@ function onWebcamSelected() {
   let id = dropdown.options[dropdown.selectedIndex].value;
 
   // Build the constraint object
-  let constraints = {
-    video: { deviceId: { exact: id} }
-  };
 
+
+let constraints = {
+  video: {
+    deviceId: { exact: id} ,
+    width: { exact: 2304 },
+    height: { exact: 1536 }
+  }
+};
   // Attach the webcam feed to a video element so we can view it
   return navigator.mediaDevices.getUserMedia(constraints)
     .then(stream => videoElement.srcObject = stream);
